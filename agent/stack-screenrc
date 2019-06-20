@@ -1,0 +1,15 @@
+sessionname stack
+hardstatus alwayslastline '%{= .} %-Lw%{= .}%> %n%f %t*%{= .}%+Lw%< %-=%{g}(%{d}%H/%l%{g})'
+setenv PROMPT_COMMAND /bin/true
+screen -t shell bash
+screen -t q-agt bash
+stuff "cd /opt/stack/neutron; neutron-openvswitch-agent --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini"
+screen -t n-cpu bash
+stuff "cd /opt/stack/nova && /usr/local/bin/nova-compute --config-file /etc/nova/nova.conf"
+screen -t n-novnc bash
+stuff "cd /opt/stack/nova && /usr/local/bin/nova-novncproxy --config-file /etc/nova/nova.conf --web /opt/stack/noVNC"
+screen -t ryu bash
+stuff "cd /opt/stack/ryu; /opt/stack/ryu/bin/ryu-manager --flagfile /etc/ryu/ryu.conf"
+screen -t j-ovsdb bash
+stuff "sleep 60; cd /opt/stack/janus-ovsdb; ./ovsdb.py"
+
