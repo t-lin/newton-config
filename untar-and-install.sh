@@ -1,9 +1,9 @@
 #!/bin/bash
 
 echo "Installing apt and pip packages..."
-sudo apt-get install ipset conntrack libvirt-dev pkg-config libmysqlclient-dev
+sudo apt-get install ipset conntrack libvirt-dev pkg-config libmysqlclient-dev libffi-dev libssl-dev
 sudo pip install -U pip
-sudo pip install setuptools==38.7.0 gevent==1.0.2 pymysql mysqlclient python-neutronclient==5.1.0
+sudo pip install setuptools==38.7.0 cffi==1.5.2 cryptography==1.2.3 gevent==1.0.2 pymysql mysqlclient python-neutronclient==5.1.0
 echo
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

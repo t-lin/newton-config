@@ -9,6 +9,9 @@ fi
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+# Ensure correct permissions first
+sudo chown -R `whoami`:`whoami` /etc/nova /etc/neutron /opt/stack
+
 echo "Renaming old nova configurations..."
 mv /etc/nova/nova.conf /etc/nova/nova.conf.havana
 mv /etc/nova/rootwrap.conf /etc/nova/rootwrap.conf.havana
